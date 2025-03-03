@@ -23,10 +23,11 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    /**
-     * 
-     * @param id
-     * @return
+    /*  ============= cURL ==============
+     *	# JSON response:
+     
+     	curl -s -L -X GET 'http://localhost:8080/member/1' | jq
+     
      */
     @GetMapping("/{id}")
     public @ResponseBody ResponseEntity<MemberResponse> searchMember(@PathVariable Long id) {
@@ -36,20 +37,20 @@ public class MemberController {
 	return ResponseEntity.ok(member);
     }
 
-    /**
-     * 
-     * @param page
-     * @param size
-     * @param sort
-     * @return
-     * @throws Exception
+    /*  ============= cURL ==============
+     *	# JSON response:
+
+        curl -s -L -X GET 'http://localhost:8080/members?page=0&size=8&sort=asc' | jq
+        curl -s -L -X GET 'http://localhost:8080/members?page=0&size=8' | jq
+        curl -s -L -X GET 'http://localhost:8080/members?page=0' | jq
+        curl -s -L -X GET 'http://localhost:8080/members' | jq 
+
      */
     @GetMapping("/members")
     public @ResponseBody ResponseEntity<Page<MemberResponse>> getMembers(
 	    @RequestParam(defaultValue = "0") Integer page, 
 	    @RequestParam(defaultValue = "8") Integer size,
-	    @RequestParam(defaultValue = "asc") String sort
-	    ) throws Exception { 	
+	    @RequestParam(defaultValue = "asc") String sort) {
 	
 	Direction sortDirection = sort.equalsIgnoreCase("desc") ? Direction.DESC : Direction.ASC;
 	Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "id"));
