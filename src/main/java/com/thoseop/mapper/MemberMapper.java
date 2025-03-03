@@ -3,9 +3,10 @@ package com.thoseop.mapper;
 import com.thoseop.entity.MemberEntity;
 import com.thoseop.http.response.MemberResponse;
 
-public interface MemberMapper<R, G> {
+@FunctionalInterface
+public interface MemberMapper<T, R> {
 
-    G mapIt(R r);
+    R mapIt(T t);
     
     MemberMapper<MemberResponse, MemberEntity> mapToEntity = dto ->
         new MemberEntity(dto.getMemberId(), 
