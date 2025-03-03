@@ -9,7 +9,7 @@ Sampling the use of functional interfaces to create a bean mapper.
 
 ## Features:
 
-- The project implements a mapper called MemberMapper which is a Functional Interface with two lambda expressions, one to map MemberEntity to MemberResponse and the other way for the second.
+- The project implements a mapper called [MemberMapper](https://github.com/Those-Otter-Programs/functional_interface_bean_mapper/blob/dev/src/main/java/com/thoseop/mapper/MemberMapper.java) which is a Functional Interface with two lambda expressions, one to map MemberEntity to MemberResponse and the other way for the second. The [MemberService](https://github.com/Those-Otter-Programs/functional_interface_bean_mapper/blob/dev/src/main/java/com/thoseop/service/MemberService.java) exemplifies how to make use of it.
 
 ## Controllers
 
